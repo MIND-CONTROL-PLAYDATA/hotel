@@ -9,26 +9,29 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Builder
-public class User {
+public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
-    private String username;
-    private String email;
-    private String password;
+    @Column
+    private String name;
 
     @ManyToMany
     @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<Role> roles;
+    private List<User> users;
 
-
-    // Getters and Setters
+    @Override
+    public String toString() {
+        return "Role [id=" + id + ", name=" + name + "]";
+    }
 }
+
