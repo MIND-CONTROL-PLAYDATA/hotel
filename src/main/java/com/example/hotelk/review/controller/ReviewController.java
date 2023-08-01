@@ -37,4 +37,9 @@ public class ReviewController {
                            @RequestBody ReviewRequest request) {
         reviewService.changeDate(id, request);
     }
+
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable("id") Long id) {
+        reviewService.deleteById(id);
+    }
 }
