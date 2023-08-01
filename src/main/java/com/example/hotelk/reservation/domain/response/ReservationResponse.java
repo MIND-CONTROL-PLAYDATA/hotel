@@ -17,7 +17,7 @@ public class ReservationResponse {
     private String guestName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-    private Long totalPrice;
+    private Double totalPrice;
     private User userId;
     private Integer people;
     private Boolean payment;
