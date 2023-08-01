@@ -6,7 +6,7 @@ import com.example.hotelk.roomImage.domain.request.ImageRequest;
 import java.util.List;
 
 public interface RoomImageService {
-    void save(ImageRequest request);
+    void save(Long Id, ImageRequest request);
 
     void update(Long id, ImageRequest request);
 
