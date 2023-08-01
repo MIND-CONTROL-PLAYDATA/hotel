@@ -30,6 +30,8 @@ public class Reservation {
     private Long totalPrice;
     @Column(nullable = false)
     private Integer people;
+    private Boolean payment;
+    private String poneNumber;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

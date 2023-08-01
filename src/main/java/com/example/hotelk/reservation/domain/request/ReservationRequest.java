@@ -20,10 +20,11 @@ public class ReservationRequest {
     private Long totalPrice;
     private User userId;
     private Integer people;
+    private Boolean payment;
+    private String poneNumber;
 
     public Reservation toEntity() {
         return Reservation.builder()
-                .reservationId(null)
                 .room(roomId)
                 .guestName(guestName)
                 .checkInDate(checkInDate)
@@ -31,6 +32,8 @@ public class ReservationRequest {
                 .totalPrice(totalPrice)
                 .user(userId)
                 .people(people)
+                .payment(payment)
+                .poneNumber(poneNumber)
                 .build();
     }
 }
