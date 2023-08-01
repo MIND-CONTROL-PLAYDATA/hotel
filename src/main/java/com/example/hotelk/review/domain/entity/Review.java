@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -26,13 +27,13 @@ public class Review {
     private Hotel hotel;
 
     private String guestName;
-    private int rating;
+    private Integer rating;
     private String comment;
+//    @CreationTimestamp
     private Timestamp createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Getters and Setters
 }

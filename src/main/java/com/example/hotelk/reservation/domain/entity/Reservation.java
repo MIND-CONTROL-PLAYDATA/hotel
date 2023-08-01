@@ -28,6 +28,7 @@ public class Reservation {
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private Long totalPrice;
+
     @Column(nullable = false)
     private Integer people;
     private Boolean payment;

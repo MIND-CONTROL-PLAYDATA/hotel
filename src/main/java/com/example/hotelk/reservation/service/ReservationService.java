@@ -35,7 +35,7 @@ public class ReservationService {
 
     public ReservationResponse changeDate(Long id,ReservationRequest request) {
         Optional<Reservation> byId = repository.findById(id);
-        if (byId.isEmpty()) throw new RuntimeException("없는 예약입니다.");
+        if (byId.isEmpty()) throw new RuntimeException("예약이 없습니다.");
         Reservation reservation =
                 new Reservation(id, null, request.getGuestName() , request.getCheckInDate(), request.getCheckOutDate()
                         , request.getTotalPrice(), request.getPeople(), null, request.getPoneNumber(), null);
@@ -54,6 +54,8 @@ public class ReservationService {
         Page<Reservation> allBy = repository.findAllBy(pageable);
         return allBy.map(m-> new ReservationResponse(m));
     }
+
+
 
 
 }

@@ -11,6 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.plaf.PanelUI;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalField;
 
 @RestController
 @RequiredArgsConstructor
@@ -55,5 +58,12 @@ public class ReservationController {
         reservationService.changeDate(id, request);
 
     }
+
+    @GetMapping("/price")
+    public void price() {
+        Reservation byId = reservationService.findById(1L);
+        System.out.println(ChronoUnit.DAYS.between(byId.getCheckInDate(), byId.getCheckOutDate()));
+    }
+
 
 }
