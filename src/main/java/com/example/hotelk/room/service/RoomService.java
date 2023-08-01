@@ -13,6 +13,6 @@ public interface RoomService {
     void delete(Long id);
     Room findById(Long id);
     void update(Long id, UpdateRequest request);
-    Room findByName(String name);
+    List<Room> findByName(String name);
     List<Room> findAll();
 }

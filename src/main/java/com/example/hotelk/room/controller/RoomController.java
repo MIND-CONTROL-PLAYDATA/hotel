@@ -27,7 +27,7 @@ public class RoomController {
     }
 
     @GetMapping("{name}")
-    public Room findByName(@PathVariable String name){
+    public List<Room> findByName(@PathVariable String name){
         return roomService.findByName(name);
     }
 

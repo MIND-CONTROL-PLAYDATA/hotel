@@ -28,7 +28,7 @@ public class Room {
     private Integer capacity;
     private String description;
 
-    public Room update (UpdateRequest request){
+    public void update (UpdateRequest request){
         if(request.getName() != null){
             this.name = request.getName();
         }
@@ -44,6 +44,6 @@ public class Room {
         if(request.getDescription() != null){
             this.description = request.getDescription();
         }
-        return Room;
     }
+
 }

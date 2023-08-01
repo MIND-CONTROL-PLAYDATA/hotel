@@ -36,14 +36,15 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void update(Long id, UpdateRequest request) {
         Room room = roomRepository.findById(id).orElseThrow();
-        Room update = room.update(request);
-        roomRepository.save(update);
+        room.update(request);
+//        roomRepository.save(update);
 
     }
 
     @Override
-    public Room findByName(String name) {
-        return roomRepository.findByFirstnameContaining(name);
+    public List<Room> findByName(String name) {
+        return roomRepository.findByNameContaining(name);
+
     }
 
     @Override
