@@ -1,6 +1,7 @@
 package com.example.hotelk.roomFacility.domain.entity;
 
 import com.example.hotelk.room.domain.entity.Room;
+import com.example.hotelk.roomFacility.domain.request.RoomFacilityRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +24,13 @@ public class RoomFacility {
 
     private String name;
     private String description;
+    private Integer num;
+
+    public void update(RoomFacilityRequest request){
+        this.name = request.getName();
+        this.description = request.getDescription();
+        this.num = request.getNum();
+    }
 
     // Getters and Setters
 }
