@@ -22,7 +22,7 @@ public class Payment {
     private Reservation reservation;
 
     private String paymentMethod;
-    private double amount;
+    private Integer price;
     private String paymentStatus;
     private String transactionId;
 

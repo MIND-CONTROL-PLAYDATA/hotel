@@ -27,7 +27,13 @@ public class Reservation {
     private String guestName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-    private double totalPrice;
+    private Long totalPrice;
+
+    @Column(nullable = false)
+    private Integer people;
+    private Boolean payment;
+    private String poneNumber;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
