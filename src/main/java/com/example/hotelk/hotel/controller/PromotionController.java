@@ -5,6 +5,8 @@ import com.example.hotelk.hotel.domain.request.HotelPromotionRequest;
 import com.example.hotelk.hotel.domain.request.PromotionRequest;
 import com.example.hotelk.hotel.domain.response.PromotionResponse;
 import com.example.hotelk.hotel.service.HotelPromotionService;
+import com.example.hotelk.hotel.domain.request.PromotionRequest;
+import com.example.hotelk.hotel.domain.response.PromotionResponse;
 import com.example.hotelk.hotel.service.PromotionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,12 +1,16 @@
 package com.example.hotelk.room.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
+import com.example.hotelk.reservation.domain.entity.Reservation;
 import com.example.hotelk.room.domain.requset.UpdateRequest;
+import com.example.hotelk.roomFacility.domain.entity.RoomFacility;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -27,6 +31,11 @@ public class Room {
     private Double price;
     private Integer capacity;
     private String description;
+    @OneToMany(mappedBy = "room")
+    private List<RoomFacility> roomFacilities;
+
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservation;
 
     public void update (UpdateRequest request){
         if(request.getName() != null){

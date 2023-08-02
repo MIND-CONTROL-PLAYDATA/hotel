@@ -29,8 +29,7 @@ public class Review {
     private String guestName;
     private Double rating;
     private String comment;
-//    @CreationTimestamp
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

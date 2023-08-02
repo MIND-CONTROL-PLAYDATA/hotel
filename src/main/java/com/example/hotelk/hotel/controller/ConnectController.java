@@ -4,6 +4,7 @@ import com.example.hotelk.hotel.domain.request.HotelPromotionRequest;
 import com.example.hotelk.hotel.domain.request.HotelRoomRequest;
 import com.example.hotelk.hotel.service.HotelPromotionService;
 import com.example.hotelk.hotel.service.HotelRoomService;
+import com.example.hotelk.hotel.service.HotelPromotionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -45,7 +45,7 @@ public class HotelService {
         if (byId.isEmpty()) throw new RuntimeException("없는 호텔 정보를 수정하려합니다.");
         Hotel hotel = new Hotel(
                 hotelId, hotelRequest.getName(), hotelRequest.getDescription(), hotelRequest.getAddress(), hotelRequest.getPhoneNumber()
-                , hotelRequest.getEmail(), hotelRequest.getUrl(),null, null,null,null);
+                , hotelRequest.getEmail(), hotelRequest.getUrl(),byId.get().getRooms(), byId.get().getPromotions(),null, byId.get().getRegions(), byId.get().getAmenities(),byId.get().getHotelFacilities(), byId.get().getHotelFacilityUsages());
         Hotel save = hotelRepository.save(hotel);
         return new HotelResponse(save);
     }
