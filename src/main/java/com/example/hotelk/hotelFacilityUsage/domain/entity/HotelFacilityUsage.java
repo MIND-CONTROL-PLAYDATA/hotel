@@ -22,18 +22,17 @@ public class HotelFacilityUsage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usageId;
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
-
     private String guestName;
-
-    @ManyToOne
-    @JoinColumn(name = "facility_id")
-    private HotelFacility facility;
 
     private Timestamp usageDate;
     private Timestamp usageTime;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
+    @ManyToOne
+    @JoinColumn(name = "facility_id")
+    private HotelFacility facility;
 
     // Getters and Setters
 }

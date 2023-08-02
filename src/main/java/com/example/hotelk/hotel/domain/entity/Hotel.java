@@ -1,5 +1,8 @@
 package com.example.hotelk.hotel.domain.entity;
 
+import com.example.hotelk.amenities.domain.entity.Amenities;
+import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
+import com.example.hotelk.hotelFacilityUsage.domain.entity.HotelFacilityUsage;
 import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
 import com.example.hotelk.room.domain.entity.Room;
 import jakarta.persistence.*;
@@ -37,4 +40,13 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel")
     private List<HotelRegion> regions;
 
+    @OneToMany(mappedBy = "hotel")
+    private List<Amenities> amenities;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<HotelFacility> hotelFacilities;
+
+
+    @OneToMany(mappedBy = "hotel")
+    private List<HotelFacilityUsage> hotelFacilityUsages;
 }
