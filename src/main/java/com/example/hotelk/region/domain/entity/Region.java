@@ -21,7 +21,7 @@ public class Region {
 
     private String name;
 
-    @OneToMany(mappedBy = "regions")
+    @OneToMany(mappedBy = "region")
     private List<HotelRegion> hotels;
     // Getters and Setters
 }

@@ -34,7 +34,7 @@ public class RegionService {
     public RegionResponse update(Long id, RegionRequest request) {
         Optional<Region> byId = regionRepository.findById(id);
         if (byId.isEmpty()) throw new RuntimeException("REGION NOT FOUND!!");
-        Region region = new Region(id, request.name(), null);
+        Region region = new Region(id, request.name(), byId.get().getHotels());
         Region save = regionRepository.save(region);
 
         return new RegionResponse(save);

@@ -13,12 +13,12 @@ public class RegionResponse {
     private Long regionId;
     private String name;
 
-    private List<HotelDto> hotels;
+//    private List<HotelDto> hotels;
 
     public RegionResponse(Region region) {
         this.regionId = region.getRegionId();
         this.name = region.getName();
-        this.hotels = region.getHotels().stream().map(HotelRegion::getHotel).map(HotelDto::new).toList();
+//        this.hotels = region.getHotels().stream().map(HotelRegion::getHotel).map(HotelDto::new).toList();
     }
 
 
