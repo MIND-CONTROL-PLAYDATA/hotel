@@ -10,7 +10,9 @@ import java.util.List;
 public class AmenitiesResponse {
     private Long amenityId;
 
-    private Hotel hotel;
+//    private Hotel hotel;
+
+    private Long hotelId;
 
     private String name;
     private String description;
@@ -18,7 +20,7 @@ public class AmenitiesResponse {
 
     public AmenitiesResponse(Amenities amenities) {
         this.amenityId = amenities.getAmenityId();
-        this.hotel = amenities.getHotel();
+        this.hotelId = amenities.getHotel().getHotelId();
         this.name = amenities.getName();
         this.description = amenities.getDescription();
     }
