@@ -8,12 +8,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class ReservationResponse {
-    private Room roomId;
+    private Long reservationId;
     private String guestName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
@@ -24,7 +25,7 @@ public class ReservationResponse {
     private String poneNumber;
 
     public ReservationResponse(Reservation reservation) {
-        this.roomId = reservation.getRoom();
+        this.reservationId = reservation.getReservationId();
         this.guestName = reservation.getGuestName();
         this.checkInDate = reservation.getCheckInDate();
         this.checkOutDate = reservation.getCheckOutDate();
