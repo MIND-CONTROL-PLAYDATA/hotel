@@ -33,4 +33,5 @@ public class RoomFacility {
     }
 
     // Getters and Setters
+
 }

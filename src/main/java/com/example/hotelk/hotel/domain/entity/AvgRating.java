@@ -1,6 +1,5 @@
-package com.example.hotelk.hotelRating.domain.entity;
+package com.example.hotelk.hotel.domain.entity;
 
-import com.example.hotelk.hotel.domain.entity.Hotel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -15,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Builder
-public class HotelRating {
+public class AvgRating {
     @Id
     @ManyToOne
     @JoinColumn(name = "hotel_id")
