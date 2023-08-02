@@ -21,7 +21,6 @@ public class ReservationResponse {
     private Double totalPrice;
     private User userId;
     private Integer people;
-    private Boolean payment;
     private String poneNumber;
 
     public ReservationResponse(Reservation reservation) {
@@ -32,7 +31,6 @@ public class ReservationResponse {
         this.totalPrice = reservation.getTotalPrice();
         this.userId = reservation.getUser();
         this.people = reservation.getPeople();
-        this.payment = reservation.getPayment();
         this.poneNumber = reservation.getPoneNumber();
     }
 }

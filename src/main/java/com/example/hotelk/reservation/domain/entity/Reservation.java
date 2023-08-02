@@ -31,7 +31,6 @@ public class Reservation {
 
     @Column(nullable = false)
     private Integer people;
-    private Boolean payment;
     private String poneNumber;
 
     @ManyToOne

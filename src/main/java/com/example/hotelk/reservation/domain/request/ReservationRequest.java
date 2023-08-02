@@ -1,5 +1,6 @@
 package com.example.hotelk.reservation.domain.request;
 
+import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.reservation.domain.entity.Reservation;
 import com.example.hotelk.room.domain.entity.Room;
 import com.example.hotelk.user.domain.entity.User;
@@ -20,10 +21,9 @@ public class ReservationRequest {
     private LocalDate checkOutDate;
     private Long userId;
     private Integer people;
-    private Boolean payment;
     private String poneNumber;
 
-    public Reservation toEntity(Room roomId) {
+    /*public Reservation toEntity(Room roomId, User userId) {
         double totalPrice = ChronoUnit.DAYS.between(checkInDate, checkOutDate) * roomId.getPrice(); //totalPrice 계산
         return Reservation.builder()
                 .room(roomId)
@@ -31,10 +31,9 @@ public class ReservationRequest {
                 .checkInDate(checkInDate)
                 .checkOutDate(checkOutDate)
                 .totalPrice(totalPrice)
-                .user(null)
                 .people(people)
-                .payment(payment)
                 .poneNumber(poneNumber)
+                .user(userId)
                 .build();
-    }
+    }*/
 }
