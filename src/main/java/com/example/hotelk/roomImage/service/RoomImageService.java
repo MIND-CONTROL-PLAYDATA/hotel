@@ -6,13 +6,13 @@ import com.example.hotelk.roomImage.domain.request.ImageRequest;
 import java.util.List;
 
 public interface RoomImageService {
-    void save(ImageRequest request);
+    void save(Long roomId, ImageRequest request);
 
-    void update(Long id, ImageRequest request);
+    void update(Long roomId, Long id, ImageRequest request);
 
     void delete(Long id);
 
-    List<RoomImage> findAll();
+    List<RoomImage> findAll(Long roomId);
 
     RoomImage findById(Long id);
 }
