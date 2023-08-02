@@ -24,8 +24,12 @@ public class RoomImageServiceImpl implements RoomImageService{
     }
 
     @Override
-    public void update(Long id, ImageRequest request) {
-        RoomImage roomImage = findById(id);
+    public List<RoomImage> findAll(Long roomId) {
+        return roomImageRepository.findAll(roomId);
+    }
+    @Override
+    public void update(Long roomId, Long id, ImageRequest request) {
+        RoomImage roomImage = roomImageRepository.findByRoomIdAndImageId(roomId, id);
         roomImage.update(request);
     }
 
@@ -34,10 +38,7 @@ public class RoomImageServiceImpl implements RoomImageService{
         roomImageRepository.delete(findById(id));
     }
 
-    @Override
-    public List<RoomImage> findAll() {
-        return roomImageRepository.findAll();
-    }
+
 
     @Override
     public RoomImage findById(Long id) {

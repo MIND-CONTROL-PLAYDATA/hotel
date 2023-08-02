@@ -13,10 +13,10 @@ public class RoomFacilityRequest {
     private String description;
     private Integer num;
 
-    public RoomFacility toEntity(RoomFacilityRequest request){
+    public RoomFacility toEntity(RoomFacilityRequest request,Room room){
         return RoomFacility.builder()
                 .facilityId(null)
-                .room(null)
+                .room(room)
                 .name(request.getName())
                 .num(request.getNum())
                 .description(request.getDescription())

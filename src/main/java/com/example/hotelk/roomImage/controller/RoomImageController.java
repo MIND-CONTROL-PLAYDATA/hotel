@@ -20,25 +20,21 @@ public class RoomImageController {
         service.save(roomId,request);
     }
 
-//    @GetMapping
-//    public List<RoomImage> findAllImage(){
-//        return service.findAll();
-//    }
-//
-//    @PostMapping
-//    public void saveImage(@RequestBody ImageRequest request){
-//        service.save(request);
-//    }
-//
-//    @PutMapping("{id}")
-//    public void updateImage(@PathVariable Long id,
-//                            @RequestBody ImageRequest request){
-//        service.update(id,request);
-//    }
-//
-//    @DeleteMapping("{id}")
-//    public void deleteImage(@PathVariable Long id){
-//        service.delete(id);
-//    }
-//
+    @GetMapping
+    public List<RoomImage> findAllImage(@PathVariable Long roomId){
+        return service.findAll(roomId);
+    }
+
+    @PutMapping("{id}")
+    public void updateImage(@PathVariable Long roomId,
+                            @PathVariable Long id,
+                            @RequestBody ImageRequest request){
+        service.update(roomId,id,request);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteImage(@PathVariable Long id){
+        service.delete(id);
+    }
+
 }
