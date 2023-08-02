@@ -4,6 +4,8 @@ import com.example.hotelk.amenities.domain.entity.Amenities;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public class AmenitiesResponse {
     private Long amenityId;
@@ -12,6 +14,7 @@ public class AmenitiesResponse {
 
     private String name;
     private String description;
+
 
     public AmenitiesResponse(Amenities amenities) {
         this.amenityId = amenities.getAmenityId();

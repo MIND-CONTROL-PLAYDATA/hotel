@@ -17,12 +17,14 @@ public class Amenities {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long amenityId;
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+
 
     private String name;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
 
     // Getters and Setters
 }

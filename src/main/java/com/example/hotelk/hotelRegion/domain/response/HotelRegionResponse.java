@@ -1,4 +1,4 @@
-package com.example.hotelk.region.domain;
+package com.example.hotelk.hotelRegion.domain.response;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
@@ -8,19 +8,16 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class RegionResponse {
+public class HotelRegionResponse {
 
-    private Long regionId;
-    private String name;
+    List<HotelDto> hotels;
 
-    private List<HotelDto> hotels;
+    List<RegionDto> regions;
 
-    public RegionResponse(Region region) {
-        this.regionId = region.getRegionId();
-        this.name = region.getName();
-        this.hotels = region.getHotels().stream().map(HotelRegion::getHotel).map(HotelDto::new).toList();
+    public HotelRegionResponse(HotelRegion hotelRegion) {
+        this.hotels = hotelRegion.getRegion().getHotels().stream().map(HotelRegion::getHotel).map(HotelDto::new).toList();
+        this.regions = hotelRegion.getHotel().getRegions().stream().map(HotelRegion::getRegion).map(RegionDto::new).toList();
     }
-
 
     @Getter
     class HotelDto {
@@ -41,6 +38,18 @@ public class RegionResponse {
             this.phoneNumber = hotel.getPhoneNumber();
             this.email = hotel.getEmail();
             this.url = hotel.getUrl();
+        }
+    }
+
+    @Getter
+    class RegionDto {
+        private Long regionId;
+
+        private String name;
+
+        public RegionDto(Region region) {
+            this.regionId = region.getRegionId();
+            this.name = region.getName();
         }
     }
 }
