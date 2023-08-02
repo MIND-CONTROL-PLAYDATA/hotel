@@ -1,4 +1,4 @@
-package com.example.hotelk.user.serivce;
+package com.example.hotelk.user.service;
 
 
 import com.example.hotelk.security.JwtTokenProvider;
@@ -7,12 +7,13 @@ import com.example.hotelk.user.domain.entity.User;
 import com.example.hotelk.user.domain.request.LoginRequest;
 import com.example.hotelk.user.domain.request.SignupRequest;
 import com.example.hotelk.user.repository.UserRepository;
-import com.example.hotelk.user.response.SignupResponse;
+import com.example.hotelk.user.domain.response.SignupResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -43,17 +44,21 @@ public class UserService {
     }
     @Transactional
     public TokenInfo login(LoginRequest request) {
-        // 1. Login ID/PW 를 기반으로 Authentication 객체 생성
-        // 이때 authentication 는 인증 여부를 확인하는 authenticated 값이 false
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(request.username(), request.password());
+        // 1. Get the user by username (or email) from the database
+        Optional<User> byUsername = userRepository.findByUsername(request.username());
+        User user = byUsername.orElseThrow(() -> new RuntimeException("USER NOT FOUND"));
 
-        // 2. 실제 검증 (사용자 비밀번호 체크)이 이루어지는 부분
-        // authenticate 매서드가 실행될 때 CustomUserDetailsService 에서 만든 loadUserByUsername 메서드가 실행
-        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+        // 2. Check the provided plain-text password against the hashed password
+        if (bCryptPasswordEncoder.matches(request.password(), user.getPassword())) {
+            // 3. Authenticate the user
+            Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // 3. 인증 정보를 기반으로 JWT 토큰 생성
-        TokenInfo tokenInfo = jwtTokenProvider.generateToken(authentication);
-
-        return tokenInfo;
+            // 4. Generate JWT token
+            TokenInfo tokenInfo = jwtTokenProvider.generateToken(authentication);
+            return tokenInfo;
+        } else {
+            throw new RuntimeException("Invalid username/password");
+        }
     }
 }

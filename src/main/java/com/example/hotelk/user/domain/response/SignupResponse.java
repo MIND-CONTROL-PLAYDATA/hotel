@@ -1,4 +1,4 @@
-package com.example.hotelk.user.response;
+package com.example.hotelk.user.domain.response;
 
 
 import com.example.hotelk.user.domain.entity.User;

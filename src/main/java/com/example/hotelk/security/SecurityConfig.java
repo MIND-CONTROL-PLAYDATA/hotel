@@ -30,8 +30,9 @@ public class SecurityConfig {
         http.sessionManagement(s-> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.authorizeHttpRequests(h->
                 h
-                        .requestMatchers("/members/test").hasRole("USER")
-                        .requestMatchers("/api/v1/user/*").permitAll()
+                        .requestMatchers("/api/v1/user/test").permitAll()
+                        .requestMatchers("/api/v1/region/**").permitAll()
+                        .requestMatchers("/api/v1/user/**").permitAll()
                         .anyRequest().authenticated()
                 );
 //        http
@@ -53,8 +54,5 @@ public class SecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-//    @Bean
-//    public JwtAuthenticationFilter jwtAuthenticationFilter() {
-//        return new JwtAuthenticationFilter(jwtTokenProvider);
-//    }
+
 }

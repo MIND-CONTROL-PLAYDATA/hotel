@@ -1,4 +1,4 @@
-package com.example.hotelk.user.serivce;
+package com.example.hotelk.user.service;
 
 import com.example.hotelk.user.domain.entity.User;
 import com.example.hotelk.user.repository.UserRepository;
