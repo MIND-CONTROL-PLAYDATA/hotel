@@ -1,6 +1,7 @@
 package com.example.hotelk.amenities.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,12 +18,15 @@ public class Amenities {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long amenityId;
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+
 
     private String name;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    @JsonIgnore
+    private Hotel hotel;
 
     // Getters and Setters
 }

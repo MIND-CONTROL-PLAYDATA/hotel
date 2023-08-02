@@ -7,17 +7,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class ReviewRequest {
     private Hotel hotelId;
     private String guestName;
-    private Integer rating;
+    private Double rating;
     private String comment;
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
     private User userId;
 
     public Review toEntity() {
+        createdAt = LocalDateTime.now();
         return Review.builder()
                 .hotel(hotelId)
                 .guestName(guestName)

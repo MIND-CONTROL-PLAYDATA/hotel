@@ -1,6 +1,7 @@
 package com.example.hotelk.room.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
+import com.example.hotelk.reservation.domain.entity.Reservation;
 import com.example.hotelk.room.domain.requset.UpdateRequest;
 import com.example.hotelk.roomFacility.domain.entity.RoomFacility;
 import jakarta.persistence.*;
@@ -32,6 +33,9 @@ public class Room {
     private String description;
     @OneToMany(mappedBy = "room")
     private List<RoomFacility> roomFacilities;
+
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservation;
 
     public void update (UpdateRequest request){
         if(request.getName() != null){

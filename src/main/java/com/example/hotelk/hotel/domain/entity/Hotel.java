@@ -1,13 +1,18 @@
 package com.example.hotelk.hotel.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.hotelk.amenities.domain.entity.Amenities;
+import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
+import com.example.hotelk.hotelFacilityUsage.domain.entity.HotelFacilityUsage;
+import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
+import com.example.hotelk.room.domain.entity.Room;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -24,6 +29,27 @@ public class Hotel {
     private String address;
     private String phoneNumber;
     private String email;
+    private String url;
 
-    // Getters and Setters
+    @OneToMany(mappedBy = "hotel")
+    private List<Room> room;
+    @OneToMany(mappedBy = "hotel")
+    private List<HotelPromotion> promotions;
+    @OneToMany(mappedBy = "hotel")
+    private List<AvgRating> avgRatings;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<HotelRegion> regions;
+
+    @OneToMany(mappedBy = "hotel")
+    private List<Amenities> amenities;
+
+
+    @OneToMany(mappedBy = "hotel")
+
+    private List<HotelFacility> hotelFacilities;
+
+
+    @OneToMany(mappedBy = "hotel")
+    private List<HotelFacilityUsage> hotelFacilityUsages;
 }

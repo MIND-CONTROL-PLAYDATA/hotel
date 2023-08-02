@@ -9,28 +9,29 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @Getter
 @AllArgsConstructor
 public class ReservationRequest {
-    private Room roomId;
+    private Long roomId;
     private String guestName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-    private Long totalPrice;
-    private User userId;
+    private Long userId;
     private Integer people;
     private Boolean payment;
     private String poneNumber;
 
-    public Reservation toEntity() {
+    public Reservation toEntity(Room roomId) {
+        double totalPrice = ChronoUnit.DAYS.between(checkInDate, checkOutDate) * roomId.getPrice(); //totalPrice 계산
         return Reservation.builder()
                 .room(roomId)
                 .guestName(guestName)
                 .checkInDate(checkInDate)
                 .checkOutDate(checkOutDate)
                 .totalPrice(totalPrice)
-                .user(userId)
+                .user(null)
                 .people(people)
                 .payment(payment)
                 .poneNumber(poneNumber)

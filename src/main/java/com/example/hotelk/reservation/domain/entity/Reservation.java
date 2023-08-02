@@ -20,14 +20,14 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     private Room room;
 
     private String guestName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-    private Long totalPrice;
+    private Double totalPrice;
 
     @Column(nullable = false)
     private Integer people;

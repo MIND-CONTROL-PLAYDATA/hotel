@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,13 +16,15 @@ import java.sql.Timestamp;
 public class ReviewResponse {
     private Hotel hotelName;
     private String guestName;
-    private Integer rating;
+    private Double rating;
     private String comment;
+    private LocalDateTime createdAt;
 
     public ReviewResponse(Review review) {
         this.hotelName = review.getHotel();
         this.guestName = review.getGuestName();
         this.rating = review.getRating();
         this.comment = review.getComment();
+        this.createdAt = review.getCreatedAt();
     }
 }

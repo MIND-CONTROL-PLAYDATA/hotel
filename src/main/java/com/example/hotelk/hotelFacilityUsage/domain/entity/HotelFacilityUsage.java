@@ -2,11 +2,13 @@ package com.example.hotelk.hotelFacilityUsage.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -22,18 +24,23 @@ public class HotelFacilityUsage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usageId;
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
-
     private String guestName;
 
+
+    @CreationTimestamp
+    private LocalDate usageDate;
+
+
+    private LocalTime usageTime;
+
     @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
+    @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "facility_id")
     private HotelFacility facility;
-
-    private Timestamp usageDate;
-    private Timestamp usageTime;
 
     // Getters and Setters
 }
