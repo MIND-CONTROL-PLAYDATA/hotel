@@ -106,7 +106,6 @@ public class HotelResponse {
     class HotelFacilityDto {
         private Long facilityId;
 
-        private Hotel hotel;
 
         private String name;
         private String description;
@@ -114,9 +113,8 @@ public class HotelResponse {
 
         public HotelFacilityDto(HotelFacility hotelFacility) {
             this.facilityId = hotelFacility.getFacilityId();
-            this.hotel = hotelFacility.getHotel();
-            this.name = hotel.getName();
-            this.description = hotel.getDescription();
+            this.name = hotelFacility.getName();
+            this.description = hotelFacility.getDescription();
         }
     }
 

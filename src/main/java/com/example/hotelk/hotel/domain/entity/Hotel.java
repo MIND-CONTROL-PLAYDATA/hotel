@@ -5,6 +5,7 @@ import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
 import com.example.hotelk.hotelFacilityUsage.domain.entity.HotelFacilityUsage;
 import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
 import com.example.hotelk.room.domain.entity.Room;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,7 +44,9 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel")
     private List<Amenities> amenities;
 
+
     @OneToMany(mappedBy = "hotel")
+
     private List<HotelFacility> hotelFacilities;
 
 
