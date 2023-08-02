@@ -1,11 +1,8 @@
 package com.example.hotelk.region.domain;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
 import com.example.hotelk.region.domain.entity.Region;
 import lombok.Getter;
-
-import java.util.List;
 
 @Getter
 public class RegionResponse {

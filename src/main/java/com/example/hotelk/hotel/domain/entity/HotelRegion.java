@@ -1,4 +1,4 @@
-package com.example.hotelk.hotelRegion.domain.entity;
+package com.example.hotelk.hotel.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.region.domain.entity.Region;

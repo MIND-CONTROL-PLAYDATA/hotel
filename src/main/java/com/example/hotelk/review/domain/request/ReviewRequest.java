@@ -21,7 +21,7 @@ public class ReviewRequest {
     public Review toEntity() {
         createdAt = LocalDateTime.now();
         return Review.builder()
-                .hotel(new Hotel(hotelId,null,null,null,null,null,null,null,null,null,null))
+                .hotel(new Hotel(hotelId,null,null,null,null,null,null,null,null,null,null,null,null,null,null))
                 .guestName(guestName)
                 .rating(rating)
                 .comment(comment)

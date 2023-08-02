@@ -1,9 +1,9 @@
-package com.example.hotelk.hotelRegion.controller;
+package com.example.hotelk.hotel.controller;
 
 
-import com.example.hotelk.hotelRegion.domain.request.ConnectRequest;
-import com.example.hotelk.hotelRegion.domain.response.HotelRegionResponse;
-import com.example.hotelk.hotelRegion.service.HotelRegionService;
+import com.example.hotelk.hotel.domain.request.HotelRegionRequest;
+import com.example.hotelk.hotel.domain.response.HotelRegionResponse;
+import com.example.hotelk.hotel.service.HotelRegionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,8 +17,8 @@ public class HotelRegionController {
     private final HotelRegionService hotelRegionService;
 
     @PostMapping
-    public void connect(@RequestBody ConnectRequest request) {
-        hotelRegionService.connect(request);
+    public void connect(@RequestBody HotelRegionRequest request) {
+        hotelRegionService.hregionconnect(request);
     }
 
     @GetMapping
@@ -31,7 +31,7 @@ public class HotelRegionController {
     }
 
     @PutMapping("{id}")
-    public void update(@PathVariable("id") Long id, @RequestBody ConnectRequest request) {
+    public void update(@PathVariable("id") Long id, @RequestBody HotelRegionRequest request) {
         hotelRegionService.update(id, request);
     }
 

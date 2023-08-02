@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService {
         Hotel hotel=hotelRepository.findById(request.getHotelId()).get();
         hotelRepository.save(new Hotel(hotel.getHotelId(),hotel.getName(),hotel.getDescription(),hotel.getAddress(),
                 hotel.getPhoneNumber(),hotel.getEmail(),hotel.getUrl(),hotel.getTotalRate()+request.getRating(),
-                hotel.getNumCommentPeople()+1,hotel.getRooms(),hotel.getPromotions()));
+                hotel.getNumCommentPeople()+1,hotel.getRooms(),hotel.getPromotions(),hotel.getRegions(),hotel.getAmenities(),hotel.getHotelFacilities(),hotel.getHotelFacilityUsages()));
         repository.save(request.toEntity());
     }
 

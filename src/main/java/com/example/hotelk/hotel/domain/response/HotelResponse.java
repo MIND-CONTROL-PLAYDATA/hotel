@@ -1,31 +1,22 @@
 package com.example.hotelk.hotel.domain.response;
 
 import com.example.hotelk.amenities.domain.entity.Amenities;
-import com.example.hotelk.amenities.domain.response.AmenitiesResponse;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.entity.HotelPromotion;
 import com.example.hotelk.hotel.domain.entity.Promotion;
 import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
 import com.example.hotelk.hotelFacilityUsage.domain.entity.HotelFacilityUsage;
-import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
+import com.example.hotelk.hotel.domain.entity.HotelRegion;
 import com.example.hotelk.region.domain.entity.Region;
 import lombok.Getter;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.hotel.domain.entity.HotelPromotion;
-import com.example.hotelk.hotel.domain.entity.HotelRoom;
-import com.example.hotelk.hotel.domain.entity.Promotion;
-import com.example.hotelk.hotel.domain.request.HotelRequest;
-import com.example.hotelk.room.domain.entity.Room;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.sql.Timestamp;
+import com.example.hotelk.hotel.domain.entity.HotelRoom;
+import com.example.hotelk.room.domain.entity.Room;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,7 +114,8 @@ public class HotelResponse {
             this.price = room.getPrice();
             this.capacity = room.getCapacity();
             this.description = room.getDescription();
-
+        }
+    }
     @Getter
     class RegionDto {
         private Long regionId;

@@ -1,6 +1,6 @@
-package com.example.hotelk.hotelRegion.repository;
+package com.example.hotelk.hotel.domain.repository;
 
-import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
+import com.example.hotelk.hotel.domain.entity.HotelRegion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

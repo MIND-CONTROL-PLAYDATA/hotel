@@ -38,6 +38,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/hotelFacility/**").permitAll()
                         .requestMatchers("/api/v1/hotelFacilityUsage/**").permitAll()
                         .requestMatchers("/api/v1/amenities/**").permitAll()
+                        .requestMatchers("/api/v1/room/**").permitAll()
+                        .requestMatchers("/api/v1/connect/**").permitAll()
+                        .requestMatchers("/api/v1/**").permitAll()
                         .anyRequest().authenticated()
                 );
 //        http

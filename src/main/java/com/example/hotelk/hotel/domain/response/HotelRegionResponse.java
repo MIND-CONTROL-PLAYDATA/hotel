@@ -1,7 +1,7 @@
-package com.example.hotelk.hotelRegion.domain.response;
+package com.example.hotelk.hotel.domain.response;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
+import com.example.hotelk.hotel.domain.entity.HotelRegion;
 import com.example.hotelk.region.domain.entity.Region;
 import lombok.Getter;
 

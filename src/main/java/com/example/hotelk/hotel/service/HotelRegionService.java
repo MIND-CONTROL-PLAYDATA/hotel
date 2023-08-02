@@ -1,13 +1,11 @@
-package com.example.hotelk.hotelRegion.service;
+package com.example.hotelk.hotel.service;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.repository.HotelRepository;
-import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
-import com.example.hotelk.hotelRegion.domain.request.ConnectRequest;
-import com.example.hotelk.hotelRegion.domain.response.HotelRegionResponse;
-import com.example.hotelk.hotelRegion.repository.HotelRegionRepository;
-import com.example.hotelk.region.domain.RegionRequest;
-import com.example.hotelk.region.domain.RegionResponse;
+import com.example.hotelk.hotel.domain.entity.HotelRegion;
+import com.example.hotelk.hotel.domain.request.HotelRegionRequest;
+import com.example.hotelk.hotel.domain.response.HotelRegionResponse;
+import com.example.hotelk.hotel.domain.repository.HotelRegionRepository;
 import com.example.hotelk.region.domain.entity.Region;
 import com.example.hotelk.region.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +25,7 @@ public class HotelRegionService {
     private  final RegionRepository regionRepository;
 
     @Transactional
-    public void connect(ConnectRequest request) {
+    public void hregionconnect(HotelRegionRequest request) {
         HotelRegion hotelRegion = new HotelRegion(null,
                 Hotel.builder().hotelId(request.hotelId()).build(),
                 Region.builder().regionId(request.regionId()).build()
@@ -44,7 +42,7 @@ public class HotelRegionService {
 
 
     @Transactional
-    public HotelRegionResponse update(Long id, ConnectRequest request) {
+    public HotelRegionResponse update(Long id, HotelRegionRequest request) {
         Optional<HotelRegion> byId = hotelRegionRepository.findById(id);
         if (byId.isEmpty()) throw new RuntimeException("REGION NOT FOUND!!");
 
