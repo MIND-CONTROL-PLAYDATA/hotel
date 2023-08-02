@@ -22,7 +22,6 @@ public class HotelFacilityUsageController {
 
     @GetMapping
     public Page<HotelFacilityUsageResponse> findAll(
-            @RequestParam(value = "name", required = false, defaultValue = "") String name,
             @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page
     ) {

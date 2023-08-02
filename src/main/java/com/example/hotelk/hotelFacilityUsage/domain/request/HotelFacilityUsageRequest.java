@@ -6,11 +6,8 @@ import com.example.hotelk.hotelFacilityUsage.domain.entity.HotelFacilityUsage;
 
 import java.sql.Timestamp;
 
-public record HotelFacilityUsageRequest(Hotel hotel,String guestName,HotelFacility facility,
+public record HotelFacilityUsageRequest(Long hotelId,String guestName,Long facilityId,
                                         Timestamp usageDate, Timestamp usageTime) {
 
-    public HotelFacilityUsage toEntity() {
-      return HotelFacilityUsage.builder().hotel(hotel).guestName(guestName).facility(facility)
-                .usageDate(usageDate).usageTime(usageTime).build();
-    }
+
 }
