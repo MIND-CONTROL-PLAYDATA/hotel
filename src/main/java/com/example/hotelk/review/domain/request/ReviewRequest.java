@@ -16,9 +16,9 @@ public class ReviewRequest {
     private Double rating;
     private String comment;
     private LocalDateTime createdAt;
-    private User userId;
+    private Long userId;
 
-    public Review toEntity() {
+   /* public Review toEntity() {
         createdAt = LocalDateTime.now();
         return Review.builder()
                 .hotel(new Hotel(hotelId,null,null,null,null,null,null,null,null,null,null,null,null,null,null))
@@ -28,5 +28,5 @@ public class ReviewRequest {
                 .createdAt(createdAt)
                 .user(userId)
                 .build();
-    }
+    }*/
 }
