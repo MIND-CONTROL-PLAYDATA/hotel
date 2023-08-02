@@ -10,14 +10,16 @@ import lombok.Getter;
 public class HotelFacilityResponse {
     private Long facilityId;
 
-    private Hotel hotel;
+//    private Hotel hotel;
+
+    private Long hotelId;
 
     private String name;
     private String description;
 
     public HotelFacilityResponse(HotelFacility hotelFacility) {
         this.facilityId = hotelFacility.getFacilityId();
-        this.hotel = hotelFacility.getHotel();
+        this.hotelId = hotelFacility.getHotel().getHotelId();
         this.name = hotelFacility.getName();
         this.description = hotelFacility.getDescription();
     }

@@ -5,9 +5,6 @@ import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-public record HotelFacilityRequest(Hotel hotel, String name, String description) {
-
-    public HotelFacility toEntity() {
-        return HotelFacility.builder().hotel(hotel).name(name).description(description).build();
-    }
+public record HotelFacilityRequest(Long hotelId, String name, String description) {
+    // No need for additional methods in this record
 }
