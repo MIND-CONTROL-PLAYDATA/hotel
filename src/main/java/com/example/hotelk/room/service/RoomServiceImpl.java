@@ -1,15 +1,17 @@
 package com.example.hotelk.room.service;
 
+import com.example.hotelk.hotel.domain.entity.Hotel;
+import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.room.domain.entity.Room;
 import com.example.hotelk.room.domain.requset.RoomRequest;
 import com.example.hotelk.room.domain.requset.UpdateRequest;
+import com.example.hotelk.room.domain.response.RoomResponse;
 import com.example.hotelk.room.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -17,10 +19,11 @@ import java.util.Optional;
 public class RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
-
+    private final HotelRepository hotelRepository;
     @Override
-    public void insert(RoomRequest request) {
-        roomRepository.save(request.toEntity(request));
+    public void insert(Long hotelId, RoomRequest request) {
+        Hotel hotel = hotelRepository.findById(hotelId).orElseThrow();
+        roomRepository.save(request.toEntity(hotel,request));
     }
 
     @Override
@@ -42,13 +45,19 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> findByName(String name) {
-        return roomRepository.findByNameContaining(name);
+    public List<RoomResponse> findByName(String name) {
+        List<Room> byNameContaining = roomRepository.findByNameContaining(name);
+        return byNameContaining.stream()
+                .map(RoomResponse::new)
+                .toList();
 
     }
 
     @Override
-    public List<Room> findAll() {
-        return roomRepository.findAll();
+    public List<RoomResponse> findAll(Long hotelId) {
+        List<Room> allBy5 = roomRepository.findAllBy5(hotelId);
+        return allBy5.stream()
+                .map(RoomResponse::new)
+                .toList();
     }
 }

@@ -3,6 +3,7 @@ package com.example.hotelk.room.controller;
 import com.example.hotelk.room.domain.entity.Room;
 import com.example.hotelk.room.domain.requset.RoomRequest;
 import com.example.hotelk.room.domain.requset.UpdateRequest;
+import com.example.hotelk.room.domain.response.RoomResponse;
 import com.example.hotelk.room.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.sql.Update;
@@ -12,22 +13,23 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/room")
+@RequestMapping("/api/v1")
 public class RoomController {
     private final RoomService roomService;
 
-    @PostMapping
-    public void save(@RequestBody RoomRequest request){
-        roomService.insert(request);
+    @PostMapping("{hotelId}/room")
+    public void save(@PathVariable Long hotelId,
+                     @RequestBody RoomRequest request){
+        roomService.insert(hotelId,request);
     }
 
-    @GetMapping
-    public List<Room> findAll(){
-        return roomService.findAll();
+    @GetMapping("{hotelId}/room")
+    public List<RoomResponse> findAll(@PathVariable Long hotelId){
+        return roomService.findAll(hotelId);
     }
 
     @GetMapping("{name}")
-    public List<Room> findByName(@PathVariable String name){
+    public List<RoomResponse> findByName(@PathVariable String name){
         return roomService.findByName(name);
     }
 

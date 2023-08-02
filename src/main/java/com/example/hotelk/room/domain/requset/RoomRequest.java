@@ -1,5 +1,6 @@
 package com.example.hotelk.room.domain.requset;
 
+import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.room.domain.entity.Room;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,10 +18,10 @@ public class RoomRequest {
     private Integer capacity;
     private String description;
 
-    public Room toEntity(RoomRequest request){
+    public Room toEntity(Hotel hotel, RoomRequest request){
         return Room.builder()
                 .roomId(null)
-                .hotel(null)
+                .hotel(hotel)
                 .name(request.getName())
                 .type(request.getType())
                 .price(request.getPrice())
