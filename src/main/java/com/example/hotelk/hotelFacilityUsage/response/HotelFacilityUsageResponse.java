@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 public class HotelFacilityUsageResponse {
@@ -22,8 +24,8 @@ public class HotelFacilityUsageResponse {
 //    private HotelFacility facility;
 
     private Long facilityId;
-    private Timestamp usageDate;
-    private Timestamp usageTime;
+    private LocalDate usageDate;
+    private LocalTime usageTime;
 
     public HotelFacilityUsageResponse(HotelFacilityUsage hotelFacilityUsage) {
         this.usageId = hotelFacilityUsage.getUsageId();

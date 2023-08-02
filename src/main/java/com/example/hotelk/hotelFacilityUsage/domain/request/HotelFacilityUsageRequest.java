@@ -5,9 +5,11 @@ import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
 import com.example.hotelk.hotelFacilityUsage.domain.entity.HotelFacilityUsage;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-public record HotelFacilityUsageRequest(Long hotelId,String guestName,Long facilityId,
-                                        Timestamp usageDate, Timestamp usageTime) {
+public record HotelFacilityUsageRequest(Long hotelId, String guestName, Long facilityId,
+                                        LocalDate usageDate, LocalTime usageTime) {
 
 
 }

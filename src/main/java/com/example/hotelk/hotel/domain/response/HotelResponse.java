@@ -12,6 +12,8 @@ import com.example.hotelk.region.domain.entity.Region;
 import lombok.Getter;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,8 +126,8 @@ public class HotelResponse {
 
         private String guestName;
 
-        private Timestamp usageDate;
-        private Timestamp usageTime;
+        private LocalDate usageDate;
+        private LocalTime usageTime;
 
         public HotelFacilityUsageDto(HotelFacilityUsage hotelFacilityUsage) {
             this.usageId = hotelFacilityUsage.getUsageId();

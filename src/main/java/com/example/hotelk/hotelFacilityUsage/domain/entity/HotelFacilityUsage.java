@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -25,8 +26,12 @@ public class HotelFacilityUsage {
 
     private String guestName;
 
-    private Timestamp usageDate;
-    private Timestamp usageTime;
+
+    @CreationTimestamp
+    private LocalDate usageDate;
+
+
+    private LocalTime usageTime;
 
     @ManyToOne
     @JsonIgnore
