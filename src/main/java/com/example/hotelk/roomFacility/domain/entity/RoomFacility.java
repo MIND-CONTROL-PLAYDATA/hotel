@@ -25,4 +25,5 @@ public class RoomFacility {
     private String description;
 
     // Getters and Setters
+
 }
