@@ -10,16 +10,16 @@ import java.sql.Timestamp;
 @Getter
 @AllArgsConstructor
 public class ReviewRequest {
-    private Hotel hotelId;
+    private Long hotelId;
     private String guestName;
-    private Integer rating;
+    private Double rating;
     private String comment;
     private Timestamp createdAt;
     private User userId;
 
     public Review toEntity() {
         return Review.builder()
-                .hotel(hotelId)
+                .hotel(new Hotel(hotelId,null,null,null,null,null,null,null,null,null,null))
                 .guestName(guestName)
                 .rating(rating)
                 .comment(comment)

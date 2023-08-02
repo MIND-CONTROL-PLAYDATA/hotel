@@ -26,6 +26,5 @@ public class HotelPromotionService {
                 .promotionId(hotelPromotionRequest.getPromotionId())
                 .build());
         hotelPromotionRepository.save(hotelPromotion);
-        //builder랑 new랑 똑같다고 보면 된다
     }
 }

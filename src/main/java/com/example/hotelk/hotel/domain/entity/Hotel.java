@@ -25,12 +25,14 @@ public class Hotel {
     private String phoneNumber;
     private String email;
     private String url;
+    @Builder.Default
+    private Double totalRate = 0.0;
+    @Builder.Default
+    private Double numCommentPeople = 0.0;
 
     @OneToMany(mappedBy = "hotel")
-    private List<Room> room;
+    private List<HotelRoom> rooms;
     @OneToMany(mappedBy = "hotel")
     private List<HotelPromotion> promotions;
-    @OneToMany(mappedBy = "hotel")
-    private List<AvgRating> avgRatings;
 
 }

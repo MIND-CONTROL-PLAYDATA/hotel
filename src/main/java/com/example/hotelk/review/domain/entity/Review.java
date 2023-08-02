@@ -27,7 +27,7 @@ public class Review {
     private Hotel hotel;
 
     private String guestName;
-    private Integer rating;
+    private Double rating;
     private String comment;
 //    @CreationTimestamp
     private Timestamp createdAt;

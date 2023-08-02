@@ -1,5 +1,7 @@
 package com.example.hotelk.review.service;
 
+import com.example.hotelk.hotel.domain.entity.Hotel;
+import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.review.domain.entity.Review;
 import com.example.hotelk.review.domain.request.ReviewRequest;
 import com.example.hotelk.review.domain.response.ReviewResponse;
@@ -8,18 +10,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository repository;
+    private final HotelRepository hotelRepository;
 
 
     @Override
     public void save(ReviewRequest request) {
+        Hotel hotel=hotelRepository.findById(request.getHotelId()).get();
+        hotelRepository.save(new Hotel(hotel.getHotelId(),hotel.getName(),hotel.getDescription(),hotel.getAddress(),
+                hotel.getPhoneNumber(),hotel.getEmail(),hotel.getUrl(),hotel.getTotalRate()+request.getRating(),
+                hotel.getNumCommentPeople()+1,hotel.getRooms(),hotel.getPromotions()));
         repository.save(request.toEntity());
     }
 
@@ -49,4 +58,5 @@ public class ReviewServiceImpl implements ReviewService {
         Page<Review> allBy = repository.findAll(pageable);
         return allBy.map(r-> new ReviewResponse(r));
     }
+
 }

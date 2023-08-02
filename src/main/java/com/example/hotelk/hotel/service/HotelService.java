@@ -4,6 +4,7 @@ import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.hotel.domain.request.HotelRequest;
 import com.example.hotelk.hotel.domain.response.HotelResponse;
+import com.example.hotelk.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @Transactional
 public class HotelService {
     private final HotelRepository hotelRepository;
+    private final ReviewRepository reviewRepository;
 
     public void save(HotelRequest request) {
         hotelRepository.save(request.toEntity());
@@ -43,7 +45,7 @@ public class HotelService {
         if (byId.isEmpty()) throw new RuntimeException("없는 호텔 정보를 수정하려합니다.");
         Hotel hotel = new Hotel(
                 hotelId, hotelRequest.getName(), hotelRequest.getDescription(), hotelRequest.getAddress(), hotelRequest.getPhoneNumber()
-                , hotelRequest.getEmail(), hotelRequest.getUrl(),null, null, null);
+                , hotelRequest.getEmail(), hotelRequest.getUrl(),null, null,null,null);
         Hotel save = hotelRepository.save(hotel);
         return new HotelResponse(save);
     }

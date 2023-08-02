@@ -2,6 +2,8 @@ package com.example.hotelk.hotel.domain.request;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.entity.Promotion;
+import com.example.hotelk.review.domain.entity.Review;
+import com.example.hotelk.review.repository.ReviewRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +21,8 @@ public class HotelRequest {
     private String phoneNumber;
     private String email;
     private String url;
-
-
+    private Double totalRate;
+    private Double numCommnetPeople;
 
 public Hotel toEntity() {
     return Hotel
@@ -31,6 +33,8 @@ public Hotel toEntity() {
             .phoneNumber(phoneNumber)
             .email(email)
             .url(url)
+            .totalRate(0.0)
+            .numCommentPeople(0.0)
             .build();
 }
 }

@@ -27,7 +27,7 @@ public class Reservation {
     private String guestName;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-    private Long totalPrice;
+    private Double totalPrice;
 
     @Column(nullable = false)
     private Integer people;

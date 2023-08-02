@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 public class ReviewResponse {
     private Hotel hotelName;
     private String guestName;
-    private Integer rating;
+    private Double rating;
     private String comment;
 
     public ReviewResponse(Review review) {
