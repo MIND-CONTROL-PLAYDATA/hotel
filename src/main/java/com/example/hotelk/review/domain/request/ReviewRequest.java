@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class ReviewRequest {
-    private Hotel hotelId;
+    private Long hotelId;
     private String guestName;
     private Double rating;
     private String comment;
     private LocalDateTime createdAt;
-    private User userId;
+    private Long userId;
 
-    public Review toEntity() {
+   /* public Review toEntity() {
         createdAt = LocalDateTime.now();
         return Review.builder()
                 .hotel(hotelId)
@@ -28,5 +28,5 @@ public class ReviewRequest {
                 .createdAt(createdAt)
                 .user(userId)
                 .build();
-    }
+    }*/
 }

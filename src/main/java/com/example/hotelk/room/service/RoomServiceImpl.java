@@ -1,5 +1,6 @@
 package com.example.hotelk.room.service;
 
+import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.room.domain.entity.Room;
 import com.example.hotelk.room.domain.requset.RoomRequest;
 import com.example.hotelk.room.domain.requset.UpdateRequest;
@@ -17,7 +18,7 @@ import java.util.Optional;
 public class RoomServiceImpl implements RoomService {
 
     private final RoomRepository roomRepository;
-
+    private final HotelRepository hotelRepository;
     @Override
     public void insert(RoomRequest request) {
         roomRepository.save(request.toEntity(request));
