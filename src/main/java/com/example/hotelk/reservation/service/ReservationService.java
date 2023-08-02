@@ -5,6 +5,7 @@ import com.example.hotelk.reservation.domain.request.ReservationRequest;
 import com.example.hotelk.reservation.domain.response.ReservationResponse;
 import com.example.hotelk.reservation.repository.ReservationRepository;
 import com.example.hotelk.room.domain.entity.Room;
+import com.example.hotelk.room.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,9 +22,12 @@ import java.util.Optional;
 public class ReservationService {
 
     private final ReservationRepository repository;
+    private final RoomRepository roomRepository;
 
     public void save(ReservationRequest request) {
-        repository.save(request.toEntity());
+        Room room = roomRepository.findById(request.getRoomId())
+                .orElseThrow();
+        repository.save(request.toEntity(room));
     }
 
     public Reservation findById(Long id) {
@@ -36,9 +40,9 @@ public class ReservationService {
     public ReservationResponse changeDate(Long id,ReservationRequest request) {
         Optional<Reservation> byId = repository.findById(id);
         if (byId.isEmpty()) throw new RuntimeException("예약이 없습니다.");
-        Reservation reservation =
-                new Reservation(id, null, request.getGuestName() , request.getCheckInDate(), request.getCheckOutDate()
-                        , request.getTotalPrice(), request.getPeople(), null, request.getPoneNumber(), null);
+        Room roomId = roomRepository.findById(request.getRoomId()).orElseThrow();
+        Reservation reservation = new Reservation(id, request.toEntity(roomId).getRoom(), request.getGuestName(), request.getCheckInDate(), request.getCheckOutDate(),
+                request.toEntity(roomId).getTotalPrice(), request.getPeople(), request.getPayment(), request.getPoneNumber(), null);
         Reservation save = repository.save(reservation);
         return new ReservationResponse(save);
     }

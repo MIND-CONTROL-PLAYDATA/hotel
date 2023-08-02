@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService {
         Optional<Review> byId = repository.findById(id);
         if (byId.isEmpty()) throw new RuntimeException("게시물이 없습니다.");
         Review review = new Review(id, null, request.getGuestName(), request.getRating(),
-                request.getComment(), request.getCreatedAt(), request.getUserId());
+                request.getComment(), request.toEntity().getCreatedAt(), request.getUserId());
         Review save = repository.save(review);
         return new ReviewResponse(save);
     }

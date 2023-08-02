@@ -59,6 +59,7 @@ public class ReservationController {
 
     }
 
+    //totalPrice
     @GetMapping("/price")
     public void price() {
         Reservation byId = reservationService.findById(1L);
