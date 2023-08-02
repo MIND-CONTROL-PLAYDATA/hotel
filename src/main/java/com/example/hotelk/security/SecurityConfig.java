@@ -32,7 +32,12 @@ public class SecurityConfig {
                 h
                         .requestMatchers("/api/v1/user/test").permitAll()
                         .requestMatchers("/api/v1/region/**").permitAll()
+                        .requestMatchers("/api/v1/hotel/**").permitAll()
+                        .requestMatchers("/api/v1/hotel_region/**").permitAll()
                         .requestMatchers("/api/v1/user/**").permitAll()
+                        .requestMatchers("/api/v1/hotelFacility/**").permitAll()
+                        .requestMatchers("/api/v1/hotelFacilityUsage/**").permitAll()
+                        .requestMatchers("/api/v1/amenities/**").permitAll()
                         .anyRequest().authenticated()
                 );
 //        http
