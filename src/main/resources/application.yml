@@ -11,7 +11,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/hotel?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
-    password: hyun2002
+    password: 1q2w3e4r!!
   jpa:
     hibernate:
       ddl-auto: create

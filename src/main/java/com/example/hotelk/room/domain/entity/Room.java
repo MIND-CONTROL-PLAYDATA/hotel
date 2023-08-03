@@ -1,6 +1,8 @@
 package com.example.hotelk.room.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
+import com.example.hotelk.hotel.domain.entity.HotelRegion;
+import com.example.hotelk.hotel.domain.entity.HotelRoom;
 import com.example.hotelk.user.domain.entity.Reservation;
 import com.example.hotelk.room.domain.requset.UpdateRequest;
 import jakarta.persistence.*;
@@ -21,9 +23,8 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+    @OneToMany(mappedBy = "room")
+    private List<HotelRoom> hotels;
 
     private String name;
     private String type;
