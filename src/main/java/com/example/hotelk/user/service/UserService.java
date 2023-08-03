@@ -45,8 +45,8 @@ public class UserService {
     @Transactional
     public TokenInfo login(LoginRequest request) {
         // 1. Get the user by username (or email) from the database
-        Optional<User> byUsername = userRepository.findByUsername(request.username());
-        User user = byUsername.orElseThrow(() -> new RuntimeException("USER NOT FOUND"));
+        Optional<User> byEmail = userRepository.findByEmail(request.email());
+        User user = byEmail.orElseThrow(() -> new RuntimeException("USER NOT FOUND"));
 
         // 2. Check the provided plain-text password against the hashed password
         if (bCryptPasswordEncoder.matches(request.password(), user.getPassword())) {
@@ -58,7 +58,7 @@ public class UserService {
             TokenInfo tokenInfo = jwtTokenProvider.generateToken(authentication);
             return tokenInfo;
         } else {
-            throw new RuntimeException("Invalid username/password");
+            throw new RuntimeException("Invalid email/password");
         }
     }
 }
