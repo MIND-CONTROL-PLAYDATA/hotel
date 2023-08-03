@@ -1,7 +1,10 @@
 package com.example.hotelk.hotel.service;
 
+import com.example.hotelk.global.domain.entity.Facility;
 import com.example.hotelk.global.domain.entity.Promotion;
 import com.example.hotelk.hotel.domain.entity.*;
+import com.example.hotelk.hotel.domain.request.HotelFacilityRequest;
+import com.example.hotelk.hotel.repository.HotelFacilityRepository;
 import com.example.hotelk.hotel.repository.HotelPromotionRepository;
 import com.example.hotelk.hotel.repository.HotelRegionRepository;
 import com.example.hotelk.hotel.repository.HotelRoomRepository;
@@ -22,6 +25,8 @@ public class ConnectService {
     private final HotelPromotionRepository hotelPromotionRepository;
     private final HotelRoomRepository hotelRoomRepository;
     private final HotelRegionRepository hotelRegionRepository;
+
+    private final HotelFacilityRepository hotelFacilityRepository;
 
     public void hpconnect(HotelPromotionRequest hotelPromotionRequest) {
 
@@ -68,4 +73,20 @@ public class ConnectService {
         hotelRoomRepository.save(hotelRoom);
     }
 
+    @Transactional
+    public void hFacilityconnect(HotelFacilityRequest request) {
+        HotelFacility hotelFacility = new HotelFacility(null,
+                Hotel
+                        .builder()
+                        .hotelId(request.getHotelId())
+                        .build(),
+
+                Facility
+                        .builder()
+                        .facilityId(request.getFacilityId())
+                        .build()
+        );
+        hotelFacilityRepository.save(hotelFacility);
+
+    }
 }

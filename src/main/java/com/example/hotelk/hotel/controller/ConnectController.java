@@ -1,5 +1,6 @@
 package com.example.hotelk.hotel.controller;
 
+import com.example.hotelk.hotel.domain.request.HotelFacilityRequest;
 import com.example.hotelk.hotel.domain.request.HotelPromotionRequest;
 import com.example.hotelk.hotel.domain.request.HotelRegionRequest;
 import com.example.hotelk.hotel.domain.request.HotelRoomRequest;
@@ -31,5 +32,10 @@ public class ConnectController {
     @PostMapping("/hotelregion")
     public void hregionconnect(@RequestBody HotelRegionRequest hotelRegionRequest) {
         connectService.hregionconnect(hotelRegionRequest);
+    }
+
+    @PostMapping("/hotelfacility")
+    public void hFacilityconnect(@RequestBody HotelFacilityRequest hotelFacilityRequest) {
+        connectService.hFacilityconnect(hotelFacilityRequest);
     }
 }

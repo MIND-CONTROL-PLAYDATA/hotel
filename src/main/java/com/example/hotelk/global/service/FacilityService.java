@@ -32,7 +32,7 @@ public class FacilityService {
 
         // Create the HotelFacility entity with the fetched Hotel entity
         Facility hotelFacility = Facility.builder()
-                .hotel(hotel)
+
                 .name(request.name())
                 .description(request.description())
                 .build();
@@ -50,7 +50,7 @@ public class FacilityService {
         Optional<Facility> byId = hotelFacilityRepository.findById(id);
         if (byId.isEmpty()) throw new HotelFacilityNotFoundException("HOTEL FACILITY NOT FOUND!!");
 
-        Facility hotelFacility = new Facility(id, request.name(), request.description(), byId.get().getHotel());
+        Facility hotelFacility = new Facility(id, request.name(), request.description(), byId.get().getHotels());
         Facility save = hotelFacilityRepository.save(hotelFacility);
 
         return new FacilityResponse(save);

@@ -1,11 +1,14 @@
 package com.example.hotelk.global.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
+import com.example.hotelk.hotel.domain.entity.HotelFacility;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -20,8 +23,7 @@ public class Facility {
     private String name;
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+    @OneToMany(mappedBy = "facility")
+    private List<HotelFacility> hotels;
 
 }

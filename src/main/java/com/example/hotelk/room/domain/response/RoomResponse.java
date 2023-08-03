@@ -18,6 +18,6 @@ public class RoomResponse {
         this.price = room.getPrice();
         this.capacity = room.getCapacity();
         this.description = room.getDescription();
-        this.hotelName = room.getHotel().getName();
+
     }
 }

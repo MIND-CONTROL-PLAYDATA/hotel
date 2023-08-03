@@ -1,11 +1,9 @@
 package com.example.hotelk.hotel.domain.response;
 
-import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.hotel.domain.entity.HotelPromotion;
+import com.example.hotelk.hotel.domain.entity.*;
 import com.example.hotelk.global.domain.entity.Promotion;
 import com.example.hotelk.global.domain.entity.Facility;
 import com.example.hotelk.global.domain.entity.FacilityUsage;
-import com.example.hotelk.hotel.domain.entity.HotelRegion;
 import com.example.hotelk.global.domain.entity.Region;
 import lombok.Getter;
 
@@ -13,7 +11,6 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import com.example.hotelk.hotel.domain.entity.HotelRoom;
 import com.example.hotelk.room.domain.entity.Room;
 
 import java.util.ArrayList;
@@ -71,7 +68,7 @@ public class HotelResponse {
                 : new ArrayList<>();
         this.regions = hotel.getRegions().stream().map(HotelRegion::getRegion).map(RegionDto::new).toList();
 
-        this.hotelFacilities = hotel.getHotelFacilities().stream().map(HotelFacilityDto::new).toList();
+        this.hotelFacilities = hotel.getHotelFacilities().stream().map(HotelFacility::getFacility).map(HotelFacilityDto::new).toList();
 
         this.hotelFacilityUsages = hotel.getHotelFacilityUsages().stream().map(HotelFacilityUsageDto::new).toList();
     }

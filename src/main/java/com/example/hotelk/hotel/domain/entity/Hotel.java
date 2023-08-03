@@ -38,7 +38,7 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel")
     private List<HotelRegion> regions;
     @OneToMany(mappedBy = "hotel")
-    private List<Facility> hotelFacilities;
+    private List<HotelFacility> hotelFacilities;
     @OneToMany(mappedBy = "hotel")
     private List<FacilityUsage> hotelFacilityUsages;
 }
