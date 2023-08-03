@@ -1,6 +1,9 @@
 package com.example.hotelk.global.service;
 
 
+import com.example.hotelk.config.exception.HotelFacilityNotFoundException;
+import com.example.hotelk.config.exception.HotelFacilityUsageNotFoundException;
+import com.example.hotelk.config.exception.HotelNotFoundException;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.repository.HotelRepository;
 import com.example.hotelk.global.domain.entity.Facility;
@@ -32,9 +35,9 @@ public class FacilityUsageService {
 
         // Find the Hotel entity from the database based on the provided hotelId
         Hotel hotel = hotelRepository.findById(hotelId)
-                .orElseThrow(() -> new RuntimeException("Hotel not found"));
+                .orElseThrow(() -> new HotelNotFoundException("Hotel not found"));
 
-        Facility hotelFacility = hotelFacilityRepository.findById(facilityId).orElseThrow(() -> new RuntimeException("Facility not found"));
+        Facility hotelFacility = hotelFacilityRepository.findById(facilityId).orElseThrow(() -> new HotelFacilityNotFoundException("Facility not found"));
 
         // Create the HotelFacility entity with the fetched Hotel entity
         FacilityUsage hotelFacilityUsage = FacilityUsage.builder()
@@ -53,7 +56,7 @@ public class FacilityUsageService {
 
     public FacilityUsageResponse update(Long id, FacilityUsageRequest request) {
         Optional<FacilityUsage> byId = hotelFacilityUsageRepository.findById(id);
-        if (byId.isEmpty()) throw new RuntimeException("NOT FOUND!!");
+        if (byId.isEmpty()) throw new HotelFacilityUsageNotFoundException("NOT FOUND!!");
 
         FacilityUsage hotelFacilityUsage = new FacilityUsage(id, request.guestName(), request.usageDate(), request.usageTime(), byId.get().getHotel(), byId.get().getFacility());
         FacilityUsage save = hotelFacilityUsageRepository.save(hotelFacilityUsage);

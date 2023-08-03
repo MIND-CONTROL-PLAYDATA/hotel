@@ -1,6 +1,8 @@
 package com.example.hotelk.user.service;
 
 
+import com.example.hotelk.config.exception.ExistEmailException;
+import com.example.hotelk.config.exception.LoginFailException;
 import com.example.hotelk.security.JwtTokenProvider;
 import com.example.hotelk.security.TokenInfo;
 import com.example.hotelk.user.domain.entity.User;
@@ -29,9 +31,9 @@ public class UserService {
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder bCryptPasswordEncoder;
 
-    public SignupResponse signup(SignupRequest request) throws Exception {
+    public SignupResponse signup(SignupRequest request)  {
         if(this.isEmailExist(request.email())) {
-            throw new Exception("Your Mail already Exist.");
+            throw new ExistEmailException("Your Mail already Exist.");
         }
         User user = request.toEntity();
         user.hashPassword(bCryptPasswordEncoder);
@@ -40,25 +42,24 @@ public class UserService {
     }
     private boolean isEmailExist(String email) {
         Optional<User> byEmail = userRepository.findByEmail(email);
-        return !byEmail.isEmpty();
+        return byEmail.isPresent();
     }
     @Transactional
     public TokenInfo login(LoginRequest request) {
-        // 1. Get the user by username (or email) from the database
-        Optional<User> byUsername = userRepository.findByUsername(request.username());
-        User user = byUsername.orElseThrow(() -> new RuntimeException("USER NOT FOUND"));
 
-        // 2. Check the provided plain-text password against the hashed password
+        Optional<User> byEmail = userRepository.findByEmail(request.email());
+        User user = byEmail.orElseThrow(() -> new LoginFailException("USER NOT FOUND"));
+
+
         if (bCryptPasswordEncoder.matches(request.password(), user.getPassword())) {
-            // 3. Authenticate the user
+
             Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            // 4. Generate JWT token
             TokenInfo tokenInfo = jwtTokenProvider.generateToken(authentication);
             return tokenInfo;
         } else {
-            throw new RuntimeException("Invalid username/password");
+            throw new LoginFailException("Invalid email/password");
         }
     }
 }

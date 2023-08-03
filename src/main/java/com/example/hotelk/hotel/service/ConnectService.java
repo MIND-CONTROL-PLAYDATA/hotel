@@ -24,6 +24,7 @@ public class ConnectService {
     private final HotelRegionRepository hotelRegionRepository;
 
     public void hpconnect(HotelPromotionRequest hotelPromotionRequest) {
+
         HotelPromotion hotelPromotion = new HotelPromotion(null,
                 Hotel
                 .builder()
@@ -53,6 +54,7 @@ public class ConnectService {
         hotelRegionRepository.save(hotelRegion);
 
     }
+
     public void hrconnect(HotelRoomRequest hotelRoomRequest) {
         HotelRoom hotelRoom = new HotelRoom(null, Hotel
                 .builder()
