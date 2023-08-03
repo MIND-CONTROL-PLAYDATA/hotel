@@ -1,6 +1,6 @@
 package com.example.hotelk.hotel.domain.entity;
 
-import com.example.hotelk.global.domain.entity.Region;
+import com.example.hotelk.global.domain.entity.FacilityUsage;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,8 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Builder
-public class HotelRegion {
-
+public class HotelFacilityUsage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,11 +21,6 @@ public class HotelRegion {
     @ManyToOne(fetch = FetchType.LAZY)
     private Hotel hotel;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
-    private Region region;
-
-    // No additional fields as this is a relationship table
-
-    // Getters and Setters
+    private FacilityUsage facilityUsage;
 }

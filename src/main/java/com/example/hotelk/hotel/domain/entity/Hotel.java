@@ -1,6 +1,5 @@
 package com.example.hotelk.hotel.domain.entity;
 
-import com.example.hotelk.amenities.domain.entity.Amenities;
 import com.example.hotelk.global.domain.entity.Facility;
 import com.example.hotelk.global.domain.entity.FacilityUsage;
 import jakarta.persistence.*;
