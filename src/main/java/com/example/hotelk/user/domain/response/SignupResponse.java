@@ -8,15 +8,13 @@ import lombok.Getter;
 public class SignupResponse {
 
     private Long userId;
-
-    private String username;
     private String email;
-    private String password;
+    private String username;
+
 
     public SignupResponse(User user) {
         this.userId = user.getUserId();
         this.username = user.getUsername();
         this.email = user.getEmail();
-        this.password = user.getPassword();
     }
 }
