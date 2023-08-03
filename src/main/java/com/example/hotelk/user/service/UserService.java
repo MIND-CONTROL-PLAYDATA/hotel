@@ -36,6 +36,7 @@ public class UserService {
             throw new ExistEmailException("Your Mail already Exist.");
         }
         User user = request.toEntity();
+        user.setRoles(request.roles());
         user.hashPassword(bCryptPasswordEncoder);
         User save = userRepository.save(user);
         return new SignupResponse(save);
