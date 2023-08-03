@@ -41,6 +41,10 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/hotelFacilityUsage/**").hasRole("USER")
                         .requestMatchers("/api/v1/room/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/connect/**").hasRole("ADMIN")
+                        .requestMatchers("/swagger-ui/**",
+                                "/swagger-resources/*",
+                                "/v3/api-docs/**")
+                        .permitAll()
                         .anyRequest().authenticated()
                 );
 //        http

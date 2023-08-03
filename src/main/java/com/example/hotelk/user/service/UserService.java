@@ -10,6 +10,8 @@ import com.example.hotelk.user.domain.request.LoginRequest;
 import com.example.hotelk.user.domain.request.SignupRequest;
 import com.example.hotelk.user.repository.UserRepository;
 import com.example.hotelk.user.domain.response.SignupResponse;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
