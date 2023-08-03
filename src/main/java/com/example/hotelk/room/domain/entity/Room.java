@@ -37,20 +37,20 @@ public class Room {
     @OneToMany(mappedBy = "room")
     private List<Reservation> reservation;
 
-    public void update (UpdateRequest request){
-        if(request.getName() != null){
+    public void update(UpdateRequest request) {
+        if (request.getName() != null) {
             this.name = request.getName();
         }
-        if(request.getType() != null){
+        if (request.getType() != null) {
             this.type = request.getType();
         }
-        if(request.getPrice() != null){
+        if (request.getPrice() != null) {
             this.price = request.getPrice();
         }
-        if(request.getCapacity() != null){
+        if (request.getCapacity() != null) {
             this.capacity = request.getCapacity();
         }
-        if(request.getDescription() != null){
+        if (request.getDescription() != null) {
             this.description = request.getDescription();
         }
     }
