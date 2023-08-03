@@ -61,4 +61,11 @@ public class CustomControllerAdvice {
         return new ErrorResponse(
                 "Region Not Found", e.getCause());
     }
+
+    @ExceptionHandler(ExistFacilityException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse existFacilityException(ExistFacilityException e){
+        return new ErrorResponse(
+                 e.getMessage(),e.getCause());
+    }
 }
