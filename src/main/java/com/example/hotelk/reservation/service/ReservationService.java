@@ -34,7 +34,9 @@ public class ReservationService {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(()-> new RuntimeException("User not found"));
 
-        double totalPrice = ChronoUnit.DAYS.between(request.getCheckInDate(), request.getCheckInDate()) * room.getPrice(); //totalPrice 계산
+        double testPrice = ChronoUnit.DAYS.between(request.getCheckInDate(), request.getCheckOutDate()); //totalPrice 계산
+        double totalPrice = testPrice * room.getPrice();
+        System.out.println();
         Reservation reservation = Reservation.builder()
                 .room(room)
                 .guestName(request.getGuestName())
