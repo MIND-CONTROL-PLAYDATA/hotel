@@ -28,12 +28,12 @@ public class ConnectService {
         HotelPromotion hotelPromotion = new HotelPromotion(null,
                 Hotel
                 .builder()
-                .hotelId(hotelPromotionRequest.getHotelId())
+                .hotelId(hotelPromotionRequest.hotelId())
                 .build(),
 
                 Promotion
                         .builder()
-                        .promotionId(hotelPromotionRequest.getPromotionId())
+                        .promotionId(hotelPromotionRequest.promotionId())
                         .build());
         hotelPromotionRepository.save(hotelPromotion);
     }
@@ -58,12 +58,12 @@ public class ConnectService {
     public void hrconnect(HotelRoomRequest hotelRoomRequest) {
         HotelRoom hotelRoom = new HotelRoom(null, Hotel
                 .builder()
-                .hotelId(hotelRoomRequest.getHotelId())
+                .hotelId(hotelRoomRequest.hotelId())
                 .build(),
 
                 Room
                         .builder()
-                        .roomId(hotelRoomRequest.getRoomId())
+                        .roomId(hotelRoomRequest.rommId())
                         .build());
         hotelRoomRepository.save(hotelRoom);
     }

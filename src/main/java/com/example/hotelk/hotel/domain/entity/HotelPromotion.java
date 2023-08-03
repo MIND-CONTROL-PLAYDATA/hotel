@@ -27,7 +27,4 @@ public class HotelPromotion {
     @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 
-    // No additional fields as this is a relationship table
-
-    // Getters and Setters
 }
