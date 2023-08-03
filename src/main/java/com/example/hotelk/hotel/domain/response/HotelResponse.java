@@ -1,6 +1,5 @@
 package com.example.hotelk.hotel.domain.response;
 
-import com.example.hotelk.amenities.domain.entity.Amenities;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.entity.HotelPromotion;
 import com.example.hotelk.global.domain.entity.Promotion;
@@ -38,7 +37,6 @@ public class HotelResponse {
     private List<RoomDto> rooms;
 
     private List<RegionDto> regions;
-    private List<AmenitiesDto> amenities;
     private List<HotelFacilityDto> hotelFacilities;
 
     private List<HotelFacilityUsageDto> hotelFacilityUsages;
@@ -73,7 +71,6 @@ public class HotelResponse {
                 : new ArrayList<>();
         this.regions = hotel.getRegions().stream().map(HotelRegion::getRegion).map(RegionDto::new).toList();
 
-        this.amenities = hotel.getAmenities().stream().map(AmenitiesDto::new).toList();
         this.hotelFacilities = hotel.getHotelFacilities().stream().map(HotelFacilityDto::new).toList();
 
         this.hotelFacilityUsages = hotel.getHotelFacilityUsages().stream().map(HotelFacilityUsageDto::new).toList();
@@ -125,20 +122,6 @@ public class HotelResponse {
         public RegionDto(Region region) {
             this.regionId = region.getRegionId();
             this.name = region.getName();
-        }
-    }
-
-
-    @Getter
-    class AmenitiesDto {
-        private Long amenityId;
-        private String name;
-        private String description;
-
-        public AmenitiesDto(Amenities amenities) {
-            this.amenityId = amenities.getAmenityId();
-            this.name = amenities.getName();
-            this.description = amenities.getDescription();
         }
     }
 

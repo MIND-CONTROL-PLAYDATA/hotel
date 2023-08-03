@@ -22,9 +22,6 @@ public class HotelRegionService {
     private final HotelRepository hotelRepository;
     private  final RegionRepository regionRepository;
 
-
-
-
     @Transactional
     public HotelRegionResponse update(Long id, HotelRegionRequest request) {
         Optional<HotelRegion> byId = hotelRegionRepository.findById(id);
