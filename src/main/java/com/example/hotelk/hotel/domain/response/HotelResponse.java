@@ -3,11 +3,11 @@ package com.example.hotelk.hotel.domain.response;
 import com.example.hotelk.amenities.domain.entity.Amenities;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.entity.HotelPromotion;
-import com.example.hotelk.hotel.domain.entity.Promotion;
-import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
-import com.example.hotelk.hotelFacilityUsage.domain.entity.HotelFacilityUsage;
+import com.example.hotelk.global.domain.entity.Promotion;
+import com.example.hotelk.global.domain.entity.Facility;
+import com.example.hotelk.global.domain.entity.FacilityUsage;
 import com.example.hotelk.hotel.domain.entity.HotelRegion;
-import com.example.hotelk.region.domain.entity.Region;
+import com.example.hotelk.global.domain.entity.Region;
 import lombok.Getter;
 
 import java.sql.Timestamp;
@@ -151,7 +151,7 @@ public class HotelResponse {
         private String description;
 
 
-        public HotelFacilityDto(HotelFacility hotelFacility) {
+        public HotelFacilityDto(Facility hotelFacility) {
             this.facilityId = hotelFacility.getFacilityId();
             this.name = hotelFacility.getName();
             this.description = hotelFacility.getDescription();
@@ -167,7 +167,7 @@ public class HotelResponse {
         private LocalDate usageDate;
         private LocalTime usageTime;
 
-        public HotelFacilityUsageDto(HotelFacilityUsage hotelFacilityUsage) {
+        public HotelFacilityUsageDto(FacilityUsage hotelFacilityUsage) {
             this.usageId = hotelFacilityUsage.getUsageId();
             this.guestName = hotelFacilityUsage.getGuestName();
             this.usageDate = hotelFacilityUsage.getUsageDate();

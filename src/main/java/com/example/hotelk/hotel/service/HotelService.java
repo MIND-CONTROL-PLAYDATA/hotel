@@ -1,17 +1,16 @@
 package com.example.hotelk.hotel.service;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.hotel.domain.repository.HotelRepository;
+import com.example.hotelk.hotel.repository.HotelRepository;
 import com.example.hotelk.hotel.domain.request.HotelRequest;
 import com.example.hotelk.hotel.domain.response.HotelResponse;
-import com.example.hotelk.review.repository.ReviewRepository;
+import com.example.hotelk.user.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

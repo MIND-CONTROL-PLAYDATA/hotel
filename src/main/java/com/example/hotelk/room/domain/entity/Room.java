@@ -1,9 +1,8 @@
 package com.example.hotelk.room.domain.entity;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.reservation.domain.entity.Reservation;
+import com.example.hotelk.user.domain.entity.Reservation;
 import com.example.hotelk.room.domain.requset.UpdateRequest;
-import com.example.hotelk.roomFacility.domain.entity.RoomFacility;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

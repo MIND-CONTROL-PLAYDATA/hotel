@@ -16,11 +16,6 @@ public class HotelRegionController {
 
     private final HotelRegionService hotelRegionService;
 
-    @PostMapping
-    public void connect(@RequestBody HotelRegionRequest request) {
-        hotelRegionService.hregionconnect(request);
-    }
-
     @GetMapping
     public Page<HotelRegionResponse> findAll(
             @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,

@@ -1,15 +1,9 @@
 package com.example.hotelk.hotel.domain.request;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.hotel.domain.entity.Promotion;
-import com.example.hotelk.review.domain.entity.Review;
-import com.example.hotelk.review.repository.ReviewRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.sql.Timestamp;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor

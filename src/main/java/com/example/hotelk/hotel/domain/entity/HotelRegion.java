@@ -1,7 +1,6 @@
 package com.example.hotelk.hotel.domain.entity;
 
-import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.region.domain.entity.Region;
+import com.example.hotelk.global.domain.entity.Region;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

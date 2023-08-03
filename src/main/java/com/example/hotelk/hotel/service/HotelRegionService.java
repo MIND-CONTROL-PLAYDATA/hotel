@@ -1,16 +1,14 @@
 package com.example.hotelk.hotel.service;
 
 import com.example.hotelk.hotel.domain.entity.Hotel;
-import com.example.hotelk.hotel.domain.repository.HotelRepository;
+import com.example.hotelk.hotel.repository.HotelRepository;
 import com.example.hotelk.hotel.domain.entity.HotelRegion;
 import com.example.hotelk.hotel.domain.request.HotelRegionRequest;
 import com.example.hotelk.hotel.domain.response.HotelRegionResponse;
-import com.example.hotelk.hotel.domain.repository.HotelRegionRepository;
-import com.example.hotelk.region.domain.entity.Region;
-import com.example.hotelk.region.repository.RegionRepository;
+import com.example.hotelk.hotel.repository.HotelRegionRepository;
+import com.example.hotelk.global.domain.entity.Region;
+import com.example.hotelk.global.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,21 +22,7 @@ public class HotelRegionService {
     private final HotelRepository hotelRepository;
     private  final RegionRepository regionRepository;
 
-    @Transactional
-    public void hregionconnect(HotelRegionRequest request) {
-        HotelRegion hotelRegion = new HotelRegion(null,
-                Hotel.builder().hotelId(request.hotelId()).build(),
-                Region.builder().regionId(request.regionId()).build()
-        );
-        hotelRegionRepository.save(hotelRegion);
 
-    }
-
-    public Page<HotelRegionResponse> getAll(PageRequest request) {
-
-        Page<HotelRegion> all = hotelRegionRepository.findAll(request);
-        return all.map(HotelRegionResponse::new);
-    }
 
 
     @Transactional

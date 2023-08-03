@@ -1,6 +1,5 @@
 package com.example.hotelk.hotel.controller;
 
-import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.request.HotelRequest;
 import com.example.hotelk.hotel.domain.response.HotelResponse;
 import com.example.hotelk.hotel.service.HotelService;
@@ -8,9 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
