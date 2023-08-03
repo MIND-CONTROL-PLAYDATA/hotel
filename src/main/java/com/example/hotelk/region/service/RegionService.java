@@ -1,5 +1,6 @@
 package com.example.hotelk.region.service;
 
+import com.example.hotelk.config.exception.RegionNotFoundException;
 import com.example.hotelk.region.domain.RegionRequest;
 import com.example.hotelk.region.domain.RegionResponse;
 import com.example.hotelk.region.domain.entity.Region;
@@ -33,7 +34,7 @@ public class RegionService {
     @Transactional
     public RegionResponse update(Long id, RegionRequest request) {
         Optional<Region> byId = regionRepository.findById(id);
-        if (byId.isEmpty()) throw new RuntimeException("REGION NOT FOUND!!");
+        if (byId.isEmpty()) throw new RegionNotFoundException("REGION NOT FOUND!!");
         Region region = new Region(id, request.name(), byId.get().getHotels());
         Region save = regionRepository.save(region);
 

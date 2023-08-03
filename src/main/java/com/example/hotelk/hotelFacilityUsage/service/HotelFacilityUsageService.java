@@ -3,6 +3,9 @@ package com.example.hotelk.hotelFacilityUsage.service;
 
 import com.example.hotelk.amenities.domain.entity.Amenities;
 import com.example.hotelk.amenities.domain.request.AmenitiesRequest;
+import com.example.hotelk.config.exception.HotelFacilityNotFoundException;
+import com.example.hotelk.config.exception.HotelFacilityUsageNotFoundException;
+import com.example.hotelk.config.exception.HotelNotFoundException;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
@@ -34,9 +37,9 @@ public class HotelFacilityUsageService {
 
         // Find the Hotel entity from the database based on the provided hotelId
         Hotel hotel = hotelRepository.findById(hotelId)
-                .orElseThrow(() -> new RuntimeException("Hotel not found"));
+                .orElseThrow(() -> new HotelNotFoundException("Hotel not found"));
 
-        HotelFacility hotelFacility = hotelFacilityRepository.findById(facilityId).orElseThrow(() -> new RuntimeException("Facility not found"));
+        HotelFacility hotelFacility = hotelFacilityRepository.findById(facilityId).orElseThrow(() -> new HotelFacilityNotFoundException("Facility not found"));
 
         // Create the HotelFacility entity with the fetched Hotel entity
         HotelFacilityUsage hotelFacilityUsage = HotelFacilityUsage.builder()
@@ -55,7 +58,7 @@ public class HotelFacilityUsageService {
 
     public HotelFacilityUsageResponse update(Long id, HotelFacilityUsageRequest request) {
         Optional<HotelFacilityUsage> byId = hotelFacilityUsageRepository.findById(id);
-        if (byId.isEmpty()) throw new RuntimeException("NOT FOUND!!");
+        if (byId.isEmpty()) throw new HotelFacilityUsageNotFoundException("Hotel Facility Usage NOT FOUND!!");
 
         HotelFacilityUsage hotelFacilityUsage = new HotelFacilityUsage(id, request.guestName(), request.usageDate(), request.usageTime(), byId.get().getHotel(), byId.get().getFacility());
         HotelFacilityUsage save = hotelFacilityUsageRepository.save(hotelFacilityUsage);

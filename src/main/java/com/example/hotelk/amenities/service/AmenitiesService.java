@@ -4,6 +4,8 @@ import com.example.hotelk.amenities.domain.entity.Amenities;
 import com.example.hotelk.amenities.domain.request.AmenitiesRequest;
 import com.example.hotelk.amenities.domain.response.AmenitiesResponse;
 import com.example.hotelk.amenities.repository.AmenitiesRepository;
+import com.example.hotelk.config.exception.AmenitiesNotFoundException;
+import com.example.hotelk.config.exception.HotelNotFoundException;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
@@ -32,7 +34,7 @@ public class AmenitiesService {
 
         // Find the Hotel entity from the database based on the provided hotelId
         Hotel hotel = hotelRepository.findById(hotelId)
-                .orElseThrow(() -> new RuntimeException("Hotel not found"));
+                .orElseThrow(() -> new HotelNotFoundException("Hotel not found"));
 
         // Create the HotelFacility entity with the fetched Hotel entity
         Amenities hotelFacility = Amenities.builder()
@@ -54,7 +56,7 @@ public class AmenitiesService {
 
     public AmenitiesResponse update(Long id, AmenitiesRequest request) {
         Optional<Amenities> byId = amenitiesRepository.findById(id);
-        if (byId.isEmpty()) throw new RuntimeException("AMENITIES NOT FOUND!!");
+        if (byId.isEmpty()) throw new AmenitiesNotFoundException("AMENITIES NOT FOUND!!");
 
         Amenities amenities = new Amenities(id, request.name(), request.description(), byId.get().getHotel());
         Amenities save = amenitiesRepository.save(amenities);

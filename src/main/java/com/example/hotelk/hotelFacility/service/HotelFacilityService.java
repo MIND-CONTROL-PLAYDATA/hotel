@@ -1,5 +1,7 @@
 package com.example.hotelk.hotelFacility.service;
 
+import com.example.hotelk.config.exception.HotelFacilityNotFoundException;
+import com.example.hotelk.config.exception.HotelNotFoundException;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.hotelFacility.domain.entity.HotelFacility;
@@ -26,7 +28,7 @@ public class HotelFacilityService {
 
         // Find the Hotel entity from the database based on the provided hotelId
         Hotel hotel = hotelRepository.findById(hotelId)
-                .orElseThrow(() -> new RuntimeException("Hotel not found"));
+                .orElseThrow(() -> new HotelNotFoundException("Hotel not found"));
 
         // Create the HotelFacility entity with the fetched Hotel entity
         HotelFacility hotelFacility = HotelFacility.builder()
@@ -46,7 +48,7 @@ public class HotelFacilityService {
 
     public HotelFacilityResponse update(Long id, HotelFacilityRequest request) {
         Optional<HotelFacility> byId = hotelFacilityRepository.findById(id);
-        if (byId.isEmpty()) throw new RuntimeException("HOTEL FACILITY NOT FOUND!!");
+        if (byId.isEmpty()) throw new HotelFacilityNotFoundException("HOTEL FACILITY NOT FOUND!!");
 
         HotelFacility hotelFacility = new HotelFacility(id, byId.get().getHotel(), request.name(), request.description());
         HotelFacility save = hotelFacilityRepository.save(hotelFacility);

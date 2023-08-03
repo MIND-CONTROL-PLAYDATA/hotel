@@ -1,5 +1,7 @@
 package com.example.hotelk.hotelRegion.service;
 
+import com.example.hotelk.config.exception.HotelNotFoundException;
+import com.example.hotelk.config.exception.RegionNotFoundException;
 import com.example.hotelk.hotel.domain.entity.Hotel;
 import com.example.hotelk.hotel.domain.repository.HotelRepository;
 import com.example.hotelk.hotelRegion.domain.entity.HotelRegion;
@@ -46,13 +48,13 @@ public class HotelRegionService {
     @Transactional
     public HotelRegionResponse update(Long id, ConnectRequest request) {
         Optional<HotelRegion> byId = hotelRegionRepository.findById(id);
-        if (byId.isEmpty()) throw new RuntimeException("REGION NOT FOUND!!");
+        if (byId.isEmpty()) throw new RegionNotFoundException("REGION NOT FOUND!!");
 
         Optional<Hotel> byId1 = hotelRepository.findById(request.hotelId());
         Optional<Region> byId2 = regionRepository.findById(request.regionId());
 
-        Hotel hotel = byId1.orElseThrow(() -> new RuntimeException("HOTEL NOT FOUND!!"));
-        Region region = byId2.orElseThrow(() -> new RuntimeException("REGION NOT FOUND!!"));
+        Hotel hotel = byId1.orElseThrow(() -> new HotelNotFoundException("HOTEL NOT FOUND!!"));
+        Region region = byId2.orElseThrow(() -> new RegionNotFoundException("REGION NOT FOUND!!"));
 
         HotelRegion hotelRegion = new HotelRegion(id, hotel, region);
         HotelRegion save = hotelRegionRepository.save(hotelRegion);
