@@ -27,3 +27,4 @@ public class Facility {
     private List<HotelFacility> hotels;
 
 }
+

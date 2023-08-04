@@ -21,7 +21,6 @@ public class RoomRequest {
     public Room toEntity(Hotel hotel, RoomRequest request){
         return Room.builder()
                 .roomId(null)
-
                 .name(request.getName())
                 .type(request.getType())
                 .price(request.getPrice())

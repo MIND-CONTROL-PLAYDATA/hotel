@@ -25,7 +25,6 @@ public class ConnectService {
     private final HotelPromotionRepository hotelPromotionRepository;
     private final HotelRoomRepository hotelRoomRepository;
     private final HotelRegionRepository hotelRegionRepository;
-
     private final HotelFacilityRepository hotelFacilityRepository;
 
     public void hpconnect(HotelPromotionRequest hotelPromotionRequest) {

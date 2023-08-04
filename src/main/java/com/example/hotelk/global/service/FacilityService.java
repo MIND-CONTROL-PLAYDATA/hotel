@@ -32,7 +32,6 @@ public class FacilityService {
 
         // Create the HotelFacility entity with the fetched Hotel entity
         Facility hotelFacility = Facility.builder()
-
                 .name(request.name())
                 .description(request.description())
                 .build();

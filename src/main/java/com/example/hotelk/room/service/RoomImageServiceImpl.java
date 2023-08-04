@@ -24,8 +24,8 @@ public class RoomImageServiceImpl implements RoomImageService{
     }
 
     @Override
-    public List<RoomImage> findAll(Long roomId) {
-        return roomImageRepository.findAll(roomId);
+    public List<RoomImage> findAll(Long hotelId) {
+        return roomImageRepository.findAll(hotelId);
     }
     @Override
     public void update(Long roomId, Long id, ImageRequest request) {

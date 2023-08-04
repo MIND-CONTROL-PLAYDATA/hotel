@@ -36,6 +36,7 @@ public class ReviewServiceImpl implements ReviewService {
         Hotel hotel = hotelRepository.findById(request.getHotelId())
                 .orElseThrow(()-> new RuntimeException("Hotel not found"));
 
+
         Review review = Review.builder()
                 .hotel(hotel)
                 .guestName(request.getGuestName())
@@ -44,6 +45,10 @@ public class ReviewServiceImpl implements ReviewService {
                 .createdAt(LocalDateTime.now())
                 .user(user)
                 .build();
+
+        hotelRepository.save(new Hotel(hotel.getHotelId(),hotel.getName(),hotel.getDescription(),hotel.getAddress(),
+                hotel.getPhoneNumber(),hotel.getEmail(),hotel.getUrl(),hotel.getTotalRate()+request.getRating(),
+                hotel.getNumCommentPeople()+1,hotel.getRooms(),hotel.getPromotions(),hotel.getRegions(),hotel.getHotelFacilities(),null));
 
         reviewRepository.save(review);
     }

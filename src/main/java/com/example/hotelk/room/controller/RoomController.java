@@ -23,8 +23,8 @@ public class RoomController {
         roomService.insert(hotelId,request);
     }
 
-    @GetMapping("{hotelId}/room")
-    public List<RoomResponse> findAll(@PathVariable Long hotelId){
+    @GetMapping("room")
+    public List<RoomResponse> findAll(@RequestParam Long hotelId){
         return roomService.findAll(hotelId);
     }
 

@@ -25,3 +25,4 @@ public class Region {
     private List<HotelRegion> hotels;
     // Getters and Setters
 }
+
